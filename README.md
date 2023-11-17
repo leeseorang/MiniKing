@@ -1,1 +1,2 @@
 # MiniKing
+test
