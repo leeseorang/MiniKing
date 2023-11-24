@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     GameObject attackObjPoint; //발사체 위치
     public float attackSpeed; //발사체 속도
 
-    Transform playerPos; //플레이어 위치
+    GameObject newAttackPre; // Instantiate 복제한다 (발사체 위치지정)
 
     private void Start()
     {
@@ -34,16 +34,17 @@ public class PlayerAttack : MonoBehaviour
             Fire();
             attackDelay = 0;
         }
+        if(newAttackPre != null)
+        {
+            newAttackPre.transform.Translate(Vector3.forward * 0.05f);
+        }
     }
     void Fire()
     {// 발사체 만들고 쏘고
-        if(attackPrefab !=null)
+        if (attackPrefab != null)
         {
             // Instantiate 복제한다 (발사체 위치지정)
-            GameObject newAttackPre = Instantiate(attackPrefab, attackObjPoint.transform.position, attackObjPoint.transform.rotation);
-            // AddForce 미는 힘 
-            newAttackPre.GetComponent<Rigidbody>().AddForce(-attackPrefab.transform.forward* attackSpeed, ForceMode.Impulse);
-
+            newAttackPre = Instantiate(attackPrefab, attackObjPoint.transform.position, attackObjPoint.transform.rotation);
         }
     }
 }
