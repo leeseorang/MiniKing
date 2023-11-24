@@ -6,19 +6,27 @@ public class JoystickMove : MonoBehaviour
 {
     // Joystick으로 Player 움직이기
     public Joystick moveJoystick;
-    public float playerSpeed;
-    private Rigidbody playerRb;
-    private void Start()
+    Rigidbody playerRb;
+
+    Player player; 
+
+    public void Start()
     {
+        player = gameObject.GetComponent<Player>();
+
         playerRb = GetComponent<Rigidbody>();
+
     }
 
-    private void FixedUpdate()
+    private  void FixedUpdate()
     {
         if (moveJoystick.Direction.y != 0)
         {
             //velocity - 속도
-            playerRb.velocity = new Vector3(-moveJoystick.Direction.x * playerSpeed, 0, -moveJoystick.Direction.y * playerSpeed);
+            // playerRb.velocity = new Vector3
+            //     (-moveJoystick.Direction.x * playerSpeed, 0, -moveJoystick.Direction.y * playerSpeed);
+
+            player.Move( moveJoystick.Direction);
         }
         else
         {
