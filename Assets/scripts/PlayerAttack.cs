@@ -6,28 +6,28 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private float attackDelay; // °ø°İ µô·¹ÀÌ ½Ã°£
-    public float attackTime; // °ø°İ µô·¹ÀÌ
+    private float attackDelay; // ê³µê²© ë”œë ˆì´ ì‹œê°„
+    public float attackTime; // ê³µê²© ë”œë ˆì´
 
-    public float attackDamage; // °ø°İ·Â
-    public float playerHp; // »ı¸í·Â
+    public float attackDamage; // ê³µê²©ë ¥
+    public float playerHp; // ìƒëª…ë ¥
 
-    public GameObject attackPrefab; //¹ß»çÃ¼
-    GameObject attackObjPoint; //¹ß»çÃ¼ À§Ä¡
-    public float attackSpeed; //¹ß»çÃ¼ ¼Óµµ
+    public GameObject attackPrefab; //ë°œì‚¬ì²´
+    GameObject attackObjPoint; //ë°œì‚¬ì²´ ìœ„ì¹˜
+    public float attackSpeed; //ë°œì‚¬ì²´ ì†ë„
 
-    GameObject newAttackPre; // Instantiate º¹Á¦ÇÑ´Ù (¹ß»çÃ¼ À§Ä¡ÁöÁ¤)
+    GameObject newAttackPre; // Instantiate ë³µì œí•œë‹¤ (ë°œì‚¬ì²´ ìœ„ì¹˜ì§€ì •)
 
     private void Start()
     {
-        //ÀÚ½ÄÁß¿¡ ¹ß»çÃ¼ Obj °¡Á®¿À±â
-        // ÀÌ°Å ÀÎµ¦½º ¹øÈ£·Î °¡Á®¿À¸é ³ªÁß¿¡ ±î¸Ô°í ¿ÀºêÁ§Æ® Ãß°¡Çã¸é???
+        //ìì‹ì¤‘ì— ë°œì‚¬ì²´ Obj ê°€ì ¸ì˜¤ê¸°
+        // ì´ê±° ì¸ë±ìŠ¤ ë²ˆí˜¸ë¡œ ê°€ì ¸ì˜¤ë©´ ë‚˜ì¤‘ì— ê¹Œë¨¹ê³  ì˜¤ë¸Œì íŠ¸ ì¶”ê°€í—ˆë©´???
         attackObjPoint = transform.GetChild(0).gameObject;
     }
 
     private void Update()
     {
-        // ½Ã°£ÀÌ Èå¸¥´Ù
+        // ì‹œê°„ì´ íë¥¸ë‹¤
         attackDelay += Time.deltaTime;
         if (attackDelay > attackTime)
         {
@@ -40,10 +40,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
     void Fire()
-    {// ¹ß»çÃ¼ ¸¸µé°í ½î°í
+    {// ë°œì‚¬ì²´ ë§Œë“¤ê³  ì˜ê³ 
         if (attackPrefab != null)
         {
-            // Instantiate º¹Á¦ÇÑ´Ù (¹ß»çÃ¼ À§Ä¡ÁöÁ¤)
+            // Instantiate ë³µì œí•œë‹¤ (ë°œì‚¬ì²´ ìœ„ì¹˜ì§€ì •)
             newAttackPre = Instantiate(attackPrefab, attackObjPoint.transform.position, attackObjPoint.transform.rotation);
         }
     }
