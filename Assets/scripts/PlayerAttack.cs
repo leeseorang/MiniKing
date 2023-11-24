@@ -34,13 +34,9 @@ public class PlayerAttack : MonoBehaviour
             Fire();
             attackDelay = 0;
         }
-        if (newAttackPre != null)
-        {
-            newAttackPre.transform.Translate(Vector3.forward * 0.05f * Time.deltaTime);
-        }
     }
     void Fire()
-    {// 발사체 만들고 쏘고
+    {// 발사체 만들고
         if (attackPrefab != null)
         {
             // Instantiate 복제한다 (발사체 위치지정)

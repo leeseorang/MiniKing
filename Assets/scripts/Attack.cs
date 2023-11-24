@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    private void Update()
+    {
+        transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // πﬂªÁ√º ªË¡¶ ¡∂∞«
+        // Î∞úÏÇ¨Ï≤¥ ÏÇ≠Ï†ú Ï°∞Í±¥
         Destroy(gameObject);
     }
 }

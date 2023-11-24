@@ -12013,7 +12013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b128e118d71827341a0100f25f241458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTime: 3
+  attackTime: 1
   attackDamage: 0
   playerHp: 10
   attackPrefab: {fileID: 5891072860512389665, guid: 1bf33e56a1e658d4b9858e9c9da84b89,
@@ -12031,7 +12031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf339bae6456924289bcdb08771d585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveJoystick: {fileID: 8900221067389734206}
   playerSpeed: 3
 --- !u!4 &6084563761114846064
 Transform:
