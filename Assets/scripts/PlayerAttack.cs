@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (newAttackPre != null)
         {
-            newAttackPre.transform.Translate(Vector3.forward * 0.05f * Time.deltaTime);
+            newAttackPre.transform.Translate(Vector3.forward * 1f * Time.deltaTime);
         }
     }
     void Fire()
