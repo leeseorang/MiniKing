@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -20,7 +20,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        //자식중에 발사체 Obj 가져오기 
+        //자식중에 발사체 Obj 가져오기
+        // 이거 인덱스 번호로 가져오면 나중에 까먹고 오브젝트 추가허면???
         attackObjPoint = transform.GetChild(0).gameObject;
     }
 
