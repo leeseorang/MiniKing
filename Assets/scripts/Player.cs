@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Joystick moveJoystick;
-    public float playerSpeed;
+    public float playerSpeed = 3f;
     Rigidbody playerRb;
 
     private void Start()
