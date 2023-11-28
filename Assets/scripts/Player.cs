@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class Player : MonoBehaviour
 
     public void Move(Vector2 dir)
     {
-        playerRb.velocity = new Vector3
-              (-dir.x * playerSpeed, 0, -dir.y * playerSpeed);
+        playerRb.velocity = new Vector3 (-dir.x * playerSpeed, 0, -dir.y * playerSpeed);
+
+        transform.forward = playerRb.velocity;
     }
 }

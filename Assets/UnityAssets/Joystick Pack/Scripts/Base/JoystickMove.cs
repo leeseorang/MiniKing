@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class JoystickMove : MonoBehaviour
 {
-    // Joystick¿∏∑Œ Player øÚ¡˜¿Ã±‚
+    // JoystickÏúºÎ°ú Player ÏõÄÏßÅÏù¥Í∏∞
     public Joystick moveJoystick;
     Rigidbody playerRb;
 
-    Player player; 
+    Player player;
 
     public void Start()
     {
         player = gameObject.GetComponent<Player>();
 
         playerRb = GetComponent<Rigidbody>();
-
     }
 
-    private  void FixedUpdate()
+    private void FixedUpdate()
     {
         if (moveJoystick.Direction.y != 0)
         {
-            //velocity - º”µµ
-            // playerRb.velocity = new Vector3
-            //     (-moveJoystick.Direction.x * playerSpeed, 0, -moveJoystick.Direction.y * playerSpeed);
-
-            player.Move( moveJoystick.Direction);
+            //player.Move(moveJoystick.Direction);
+            player.Move(moveJoystick.Direction.normalized);
         }
         else
         {
