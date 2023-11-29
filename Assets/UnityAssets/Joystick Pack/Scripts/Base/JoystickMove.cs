@@ -10,23 +10,28 @@ public class JoystickMove : MonoBehaviour
 
     Player player;
 
+    Animator runAnim;
+
     public void Start()
     {
         player = gameObject.GetComponent<Player>();
 
         playerRb = GetComponent<Rigidbody>();
+
+        runAnim = gameObject.GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         if (moveJoystick.Direction.y != 0)
         {
-            //player.Move(moveJoystick.Direction);
-            player.Move(moveJoystick.Direction.normalized);
+            player.Move(moveJoystick.Direction);
+            runAnim.SetBool("isRun", true);
         }
         else
         {
             playerRb.velocity = Vector3.zero;
+            runAnim.SetBool("isRun", false);
         }
     }
 }
