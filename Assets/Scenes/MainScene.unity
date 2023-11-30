@@ -5710,8 +5710,6 @@ GameObject:
   - component: {fileID: 1654839244}
   - component: {fileID: 1654839243}
   - component: {fileID: 1654839242}
-  - component: {fileID: 1654839241}
-  - component: {fileID: 1654839240}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5719,36 +5717,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1654839240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654839239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95fe06b4fb59ddf408339e0597146dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Spawnables:
-  - {fileID: 2391359435489877134, guid: 75f057b43e0a449dae5f6549f5107474, type: 3}
-  - {fileID: 1467277096911013437, guid: 586a8fad78c64d758ef4b7e17ea63960, type: 3}
-  m_Range: {fileID: 1706202254}
-  m_parent: {fileID: 1654839244}
---- !u!65 &1654839241
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654839239}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.7950897, z: 1}
-  m_Center: {x: 0, y: -0.0010418892, z: 0}
 --- !u!23 &1654839242
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5976,6 +5944,7 @@ GameObject:
   - component: {fileID: 1706202256}
   - component: {fileID: 1706202255}
   - component: {fileID: 1706202254}
+  - component: {fileID: 1706202258}
   m_Layer: 0
   m_Name: EnemyArea
   m_TagString: Untagged
@@ -6061,6 +6030,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706202258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706202253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fe06b4fb59ddf408339e0597146dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Spawnables:
+  - {fileID: 2391359435489877134, guid: 75f057b43e0a449dae5f6549f5107474, type: 3}
+  - {fileID: 1467277096911013437, guid: 586a8fad78c64d758ef4b7e17ea63960, type: 3}
+  m_Range: {fileID: 1706202254}
+  m_parent: {fileID: 1654839244}
 --- !u!1001 &1752335858
 PrefabInstance:
   m_ObjectHideFlags: 0
