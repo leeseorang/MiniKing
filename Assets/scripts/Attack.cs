@@ -24,11 +24,11 @@ public class Attack : MonoBehaviour
 
             foreach (GameObject targetEnemy in enemys)
             {
-                float Distance = Vector3.Distance(gameObject.transform.position, targetEnemy.transform.position);
-                if (Distance < shortDis)
+                float distance = Vector3.Distance(gameObject.transform.position, targetEnemy.transform.position);
+                if (distance < shortDis)
                 {
                     enemy = targetEnemy;
-                    shortDis = Distance;
+                    shortDis = distance;
                 }
             }
         }
