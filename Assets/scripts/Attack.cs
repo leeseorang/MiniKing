@@ -38,6 +38,8 @@ public class Attack : MonoBehaviour
         if (enemys.Count > 0)
         {
             attackPos = (enemy.transform.position - transform.position).normalized;
+
+            attackPos.y = 0f;
         }
     }
     private void Update()
