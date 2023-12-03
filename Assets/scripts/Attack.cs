@@ -22,12 +22,12 @@ public class Attack : MonoBehaviour
             shortDis = Vector3.Distance(gameObject.transform.position, enemys[0].transform.position);
             enemy = enemys[0];
 
-            foreach (GameObject foundEnemy in enemys)
+            foreach (GameObject targetEnemy in enemys)
             {
-                float Distance = Vector3.Distance(gameObject.transform.position, foundEnemy.transform.position);
+                float Distance = Vector3.Distance(gameObject.transform.position, targetEnemy.transform.position);
                 if (Distance < shortDis)
                 {
-                    enemy = foundEnemy;
+                    enemy = targetEnemy;
                     shortDis = Distance;
                 }
             }

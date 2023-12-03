@@ -16,7 +16,7 @@ public class JoystickMove : MonoBehaviour
     {
         player = gameObject.GetComponent<Player>();
 
-        playerRb = GetComponent<Rigidbody>();
+       playerRb = GetComponent<Rigidbody>();
 
         runAnim = gameObject.GetComponent<Animator>();
     }

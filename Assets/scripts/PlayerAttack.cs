@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -10,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public float attackTime; // 공격 딜레이
 
     public float attackDamage; // 공격력
-    public float playerHp; // 생명력
+    
 
     public GameObject attackPrefab; //발사체
     GameObject attackObjPoint; //발사체 위치
