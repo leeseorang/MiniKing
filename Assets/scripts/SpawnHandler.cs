@@ -11,6 +11,10 @@ public class SpawnHandler : MonoBehaviour
     [SerializeField]
     private Transform m_parent;
     private Dictionary<int, Queue<GameObject>> m_objectPool=new();
+    [SerializeField]
+    private bool m_Debug=false;
+
+    
     public GameObject SpawnAt(GameObject obj, Vector3 wPosition, Quaternion rotation)
     {
         return Instantiate(obj, wPosition, rotation, m_parent);
@@ -73,11 +77,14 @@ public class SpawnHandler : MonoBehaviour
         
         return new Vector3(Random.Range(min.x,max.x),Random.Range(min.y,max.y),Random.Range(min.z,max.z));
     }
+#if UNITY_EDITOR
     private void Update()
     {
+        if(m_Debug)
         if (Input.GetMouseButtonDown(0))
         {
             SpawnAt(m_Spawnables[0], GetRandomPosition());
         }
     }
+#endif
 }
