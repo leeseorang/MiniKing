@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerHp : MonoBehaviour
+public class PlayerHpFollow : MonoBehaviour
 {
     // Hp가 플레이어 딸아가기
     GameObject player;

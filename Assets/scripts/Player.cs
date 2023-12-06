@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,15 @@ public class Player : MonoBehaviour
     public float playerSpeed = 3f;
     Rigidbody playerRb;
 
-    public float playerHp; // 생명력
-    public float playerMaxHp; // 최대 체력
-
+    public int playerHp; // 현재 생명력
+    public int playerMaxHp = 10; // 최대 체력
+    public int damage = 0; // 데미지
+    
     public Slider HpBarSlider;
 
     Animator playerDie;
+
+    public GameObject joystick;
 
     private void Start()
     {
@@ -29,30 +33,36 @@ public class Player : MonoBehaviour
         transform.forward = playerRb.velocity;
     }
 
-    // 기초 hp 체력 셋팅
-    public void SetHp(float MaxHp)
+    private void Update()
     {
-        playerMaxHp = MaxHp;
-        playerHp = playerMaxHp;
+        CheckHp();
     }
+
+
+    //생명 , 공격
+
+    // playerMaxHp(최대hp)에서 damage를 빼면 playerHp(현재hp)
     public void CheckHp()
     {
-        if (HpBarSlider != null)//hp 업데이트
+        
+        if (HpBarSlider != null)
         {
-            HpBarSlider.value = playerHp / playerMaxHp;
+            //hp 업데이트
+            playerHp = playerMaxHp - damage;
+            HpBarSlider.value = playerHp;
+
+            if (playerHp <= 0)//player 체력이 0이면
+            {
+                playerDie.SetBool("isDie", true);
+                Destroy(HpBarSlider, 1);
+                joystick.SetActive(false);
+            }
         }
     }
-    public void Damage(float damage)
-    {
-        if (playerMaxHp == 0 || playerHp <= 0)
-            return;
 
-        playerHp -= damage;
-        CheckHp();//hp 업데이트
-
-        if (playerHp <= 0)//player 체력이 0이면
-        {
-            playerDie.SetBool("isDie", true);
-        }
-    }
+    // void Try()
+    //{
+    //    int result = 0;
+    //    Action<int> act1= (x) => result = x + 1 ;
+    //}
 }
