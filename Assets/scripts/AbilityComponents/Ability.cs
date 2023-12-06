@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CharacterAbility
 {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Animator)),AddComponentMenu("")]
     public class Ability : MonoBehaviour
     {
         protected Animator m_animator;
@@ -13,7 +13,5 @@ namespace CharacterAbility
         {
             m_animator = GetComponent<Animator>();
         }
-        
     }
-
 }

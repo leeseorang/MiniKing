@@ -7,7 +7,7 @@ namespace CharacterAbility
 {
     public class SearchAbility : Ability
     {
-        private string m_searchTag="player";
+        private string m_searchTag="Player";
         private Coroutine m_Cor_Check;
         private GameObject m_target;
         public Action<GameObject> Act_Finded;
@@ -40,9 +40,9 @@ namespace CharacterAbility
                 {
                     lastCheckTime = Time.time;
                     action?.Invoke();
-                    yield return new WaitForEndOfFrame();
                     Debug.Log("~~");
                 }
+                yield return new WaitForEndOfFrame();
             }
         }
     }

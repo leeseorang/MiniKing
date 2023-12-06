@@ -8,6 +8,8 @@ namespace CharacterAbility
     public class AttackAbility : Ability
     {
         [SerializeField]
+        private float m_attackDist = 1;
+        [SerializeField]
         private float m_attackCooltime = 1f;
         [SerializeField]
         private float m_attackPretime = 0.1f;
@@ -31,7 +33,14 @@ namespace CharacterAbility
                 FuncAttackDamage = funcAttackDamage;
             }
         }
-        
+        private void OnEnable()
+        {
+            StartAttack();
+        }
+        private void OnDisable()
+        {
+            StopAttack();
+        }
         protected override void Awake()
         {
             base.Awake();
@@ -44,6 +53,7 @@ namespace CharacterAbility
         void TargetSet(GameObject go)
         {
             m_target.tf = go.transform;
+            StartAttack();
         }
         public void StartAttack()
         {
@@ -57,15 +67,21 @@ namespace CharacterAbility
         {
             while (true)
             {
-                if (Time.time > m_lastAtktime + m_attackCooltime)
+                if (m_target.tf == null) yield break;
+                if (Time.time > m_lastAtktime + m_attackCooltime&&CheckEnableAttack())
                 {
                     m_lastAtktime = Time.time;
                     DoAttack();
-                    yield return new WaitForEndOfFrame();
+                    var dir = m_target.tf.position - transform.position;
+                    transform.forward = dir;
                 }
+                yield return new WaitForEndOfFrame();
             }
         }
-
+        private bool CheckEnableAttack()
+        {
+            return Vector3.Distance(m_target.tf.position, transform.position) < m_attackDist;
+        }
         private void DoAttack()
         {
             DoAtkAnim();
