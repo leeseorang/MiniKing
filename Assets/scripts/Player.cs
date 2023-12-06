@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     Animator playerDie;
 
+    public GameObject joystick;
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
             {
                 playerDie.SetBool("isDie", true);
                 Destroy(HpBarSlider, 1);
+                joystick.SetActive(false);
             }
         }
     }
