@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -48,5 +49,8 @@ public class PlayerAttack : MonoBehaviour
             // Instantiate 복제한다 (발사체 위치지정)
             newAttackPre = Instantiate(attackPrefab, attackObjPoint.transform.position, attackObjPoint.transform.rotation);
         }
+
+        // playerMaxHp - damage
+        Func<int, int, int> func1 = (x, y) => x - y;
     }
 }
