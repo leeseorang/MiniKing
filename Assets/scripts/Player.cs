@@ -33,11 +33,11 @@ public class Player : MonoBehaviour
         transform.forward = playerRb.velocity;
     }
 
-    private void Update()
+    // 공격당할때만 확인할 것
+    private void OnTriggerEnter(Collider other)
     {
         CheckHp();
     }
-
 
     //생명 , 공격
 
