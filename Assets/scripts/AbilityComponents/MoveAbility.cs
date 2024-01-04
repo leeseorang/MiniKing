@@ -27,14 +27,14 @@ namespace CharacterAbility
         {
             if (m_search != null)
             {
-                m_search.Act_Finded += Finded;
+                m_search.SubscribeFindEvent(Finded);
             }
         }
         private void OnDisable()
         {
             if (m_search != null)
             {
-                m_search.Act_Finded -= Finded;
+                m_search.UnSubFindEvent(Finded);
             }
         }
         private void Update()

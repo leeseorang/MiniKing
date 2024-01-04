@@ -10,10 +10,21 @@ public class SpawnHandler : MonoBehaviour
     private BoxCollider m_Range;
     [SerializeField]
     private Transform m_parent;
-    private Dictionary<int, Queue<GameObject>> m_objectPool=new();
+    private List<SpawnInfo> m_objectPool=new();
     [SerializeField]
     private bool m_Debug=false;
+    public class SpawnInfo
+    {
+        /// <summary>
+        /// 적의 종류.
+        /// </summary>
+        public int spawnID;
+        public Transform transform;
+        public void Init()
+        {
 
+        }
+    }
     
     public GameObject SpawnAt(GameObject obj, Vector3 wPosition, Quaternion rotation)
     {
@@ -29,30 +40,20 @@ public class SpawnHandler : MonoBehaviour
     }
     public GameObject SpawnAt(int idx, Vector3 wPosition, Quaternion rotation)
     {
-        if (m_objectPool.ContainsKey(idx))
+        var finded = m_objectPool.Find(x => x.spawnID == idx);
+        if (finded!=null)
         {
-            if (m_objectPool[idx].Count > 0)
-            {
-                GameObject obj = m_objectPool[idx].Dequeue();
-                SpawnInit(obj);
-                return obj;
-            }
+            GameObject obj = finded.transform.gameObject;
+            SpawnInit(obj);
+            return obj;
         }
-        else
-        {
-            m_objectPool.Add(idx, new());
-        }
+
         return Instantiate(m_Spawnables[idx], wPosition, rotation, m_parent);
     }
-    public void Collect(int poolNum,GameObject obj)
+    public void Despawn(SpawnInfo obj)
     {
-        if (m_objectPool.ContainsKey(poolNum))
-        {
-            m_objectPool.Add(poolNum, new());
-
-        }
-        m_objectPool[poolNum].Enqueue(obj);
-        obj.SetActive(false);
+        m_objectPool.Add(obj);
+        obj.transform.gameObject.SetActive(false);
     }
     public void SpawnInit(GameObject obj)
     {
