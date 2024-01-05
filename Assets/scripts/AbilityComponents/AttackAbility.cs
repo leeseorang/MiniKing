@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 namespace CharacterAbility
 {
@@ -14,7 +13,7 @@ namespace CharacterAbility
         [SerializeField]
         private float m_attackPretime = 0.1f;
         [SerializeField]
-        private float m_damage = 10;
+        private float m_damage = 1;
         [SerializeField,ReadOnly]
         private float m_lastAtktime;
         private SearchAbility m_searchAbility;
@@ -26,7 +25,8 @@ namespace CharacterAbility
 
         public class TargetInfo
         {
-            public EventHandler<float> FuncAttackDamage;
+            public EventHandler<float> FuncAttackDamage;//여기에 health 연결하여 데미지를 받게 하면 됨. 서치한 타겟의 health정보를 가져와야 함
+                                                        //. 서치 어빌리티가 가져오면 좋을것 같음.
             public Transform tf;
             public TargetInfo(EventHandler<float> funcAttackDamage)
             {
@@ -48,7 +48,7 @@ namespace CharacterAbility
             m_target = new TargetInfo(FuncAttackDamage);
             m_searchAbility = GetComponent<SearchAbility>();
             if(m_searchAbility != null )
-            m_searchAbility.Act_Finded+=TargetSet;
+            m_searchAbility.SubscribeFindEvent(TargetSet);
         }
         void TargetSet(GameObject go)
         {
@@ -61,7 +61,10 @@ namespace CharacterAbility
         }
         public void StopAttack()
         {
-            StopCoroutine(m_Cor_Atk);
+            if (m_Cor_Atk != null)
+            {
+                StopCoroutine(m_Cor_Atk);
+            }
         }
         IEnumerator Co_Attack()
         {
@@ -85,7 +88,7 @@ namespace CharacterAbility
         private void DoAttack()
         {
             DoAtkAnim();
-            Invoke("ApplyDamage", m_animator.GetCurrentAnimatorStateInfo(0).length);
+            Invoke("ApplyDamage", m_animator.GetCurrentAnimatorStateInfo(0).length/1.8f);
         }
 
         private void ApplyDamage()

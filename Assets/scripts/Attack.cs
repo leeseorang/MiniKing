@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
 
         if (other.transform.tag == "Enemy")
         {
-            Destroy(enemy);
+            //Destroy(enemy);
         }
     }
 }

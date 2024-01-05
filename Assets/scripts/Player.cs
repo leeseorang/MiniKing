@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         playerDie = gameObject.GetComponent<Animator>();
+        playerHp = playerMaxHp;
     }
 
     public void Move(Vector2 dir)
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        CheckHp();
+        //CheckHp();
     }
 
 
@@ -49,6 +50,23 @@ public class Player : MonoBehaviour
         {
             //hp 업데이트
             playerHp = playerMaxHp - damage;
+            HpBarSlider.value = playerHp;
+
+            if (playerHp <= 0)//player 체력이 0이면
+            {
+                playerDie.SetBool("isDie", true);
+                Destroy(HpBarSlider, 1);
+                joystick.SetActive(false);
+            }
+        }
+    }
+
+    internal void GetDamage(int e)
+    {
+        if (HpBarSlider != null&&playerHp>0)
+        {
+            //hp 업데이트
+            playerHp -= e;
             HpBarSlider.value = playerHp;
 
             if (playerHp <= 0)//player 체력이 0이면
